@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float x = Input.GetAxis("Horizontal"); // move Horizontally
         float z = Input.GetAxis("Vertical"); // move vertically
@@ -48,12 +49,21 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Trap")
         {
             health--;
-            Debug.Log("Health: " + score);
+            Debug.Log("Health: " + health);
         }
 
         if (other.tag == "Goal")
         {
             Debug.Log("You win!");
+        }
+    }
+
+    void Update()
+    {
+        if (health == 0)
+        {
+            Debug.Log("Game Over!");
+            SceneManager.LoadScene(0);
         }
     }
 }
