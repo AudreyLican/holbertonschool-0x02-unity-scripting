@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    private int score = 0;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -23,5 +25,20 @@ public class PlayerController : MonoBehaviour
 
         // Apply the movement to the player, scaled by speed and deltaTime
         rb.AddForce(move * speed);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Pickup")
+        {
+            // increment the value score when the player touch an object tagged Pickup
+            score++;
+
+            // Outpt Debug.Log()
+            Debug.Log("Score:" + score);
+
+            //disabled object after the player touch it
+            Destroy(other.gameObject);
+        }
     }
 }
