@@ -8,7 +8,11 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody rb;
 
+    // for collecting coin
     private int score = 0;
+
+    // player health
+    public int health = 5;
 
     void Start()
     {
@@ -35,10 +39,16 @@ public class PlayerController : MonoBehaviour
             score++;
 
             // Outpt Debug.Log()
-            Debug.Log("Score:" + score);
+            Debug.Log("Score: " + score);
 
             //disabled object after the player touch it
             Destroy(other.gameObject);
+        }
+
+        if (other.tag == "Trap")
+        {
+            health--;
+            Debug.Log("Health: " + score);
         }
     }
 }
