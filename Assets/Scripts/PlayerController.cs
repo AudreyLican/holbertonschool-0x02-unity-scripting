@@ -50,5 +50,10 @@ public class PlayerController : MonoBehaviour
             health--;
             Debug.Log("Health: " + score);
         }
+
+        if (other.tag == "Goal")
+        {
+            Debug.Log("You win!");
+        }
     }
 }
