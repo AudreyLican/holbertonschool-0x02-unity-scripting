@@ -56,6 +56,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.Log("You win!");
         }
+
+        if (other.tag == "Teleporter")
+        {
+            transform.position = 
+        }
     }
 
     void Update()
